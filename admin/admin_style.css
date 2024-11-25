@@ -1,0 +1,46 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.wrapper
+{
+    display: flex;
+    position: relative;
+}
+
+
+.wrapper .sidebar
+{
+    background: black;
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    padding: 30px;
+}
+
+
+.wrapper .sidebar h2
+{
+    color: white;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+
+.wrapper .sidebar ul li
+{
+    padding: 18px;
+}
+
+.wrapper .sidebar ul li a
+{
+    color: white;
+    font-size: 16px;
+}
