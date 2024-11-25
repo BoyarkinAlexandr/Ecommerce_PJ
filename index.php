@@ -1,3 +1,21 @@
+<?php
+$conn = mysqli_connect("localhost","root","","php_kurs");
+
+$sql = "SELECT * from products";
+
+$result = mysqli_query($conn, $sql);
+
+
+
+
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,10 +78,32 @@
 
     <div class="my_card">
 
+
+        <?php
+
+        while($row=mysqli_fetch_assoc($result))
+
+        {
         
+        ?>
+
+        <div class="card">
+            <img class="p_image" src="product_image/<?php echo $row['image'] ?>">
+            <h4><?php echo $row['title'] ?></h4>
+
+            <p><?php echo $row['description'] ?></p>
+
+            <p><?php echo $row['price'] ?></p>
+
+            <a href="">Купить сейчас</a>
+
+        </div>
 
 
+        <?php
+        }
 
+        ?>
 
     
     </div>
