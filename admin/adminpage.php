@@ -40,10 +40,10 @@
                     <a href="#">Пользователи</a>
                 </li>
                 <li>
-                    <a href="#">Добавить продукт</a>
+                    <a href="add_product.php">Добавить продукт</a>
                 </li>
                 <li>
-                    <a href="#">Посмотреть продукт</a>
+                    <a href="display_product.php">Посмотреть продукт</a>
                 </li>
             </ul>
 
@@ -52,7 +52,7 @@
 
         <div class="header">
             <div class="admin_header">
-                <a href="#">Выйти</a>
+                <a href="../logout.php">Выйти</a>
             </div>
 
             <div class="info">
