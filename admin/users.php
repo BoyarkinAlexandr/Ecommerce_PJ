@@ -2,6 +2,8 @@
 
     session_start();
 
+    $conn = mysqli_connect("localhost","root","","php_kurs");
+
     if(!isset($_SESSION['user_email']))
     {
 
@@ -11,6 +13,11 @@
     {
         header("location:../home/login.php");
     }
+
+    $is_user="user";
+    $sql = "SELECT * from users where usertype = '$is_user'";
+
+    $result = mysqli_query($conn, $sql);
 
 ?>
 
@@ -60,7 +67,41 @@
             </div>
 
             <div class="info">
-                adasddasasmdaksldmasdmamklsdkamsdlkmasdmaskldkmaslkdmaksdmkaskmdakms
+                <h1>Все Пользователи</h1>
+
+                <table>
+                    <tr>
+                        <th>Имя пользователя</th>
+                        <th>Email</th>
+                        <th>Телефон</th>
+                        <th>Адресс</th>
+                    </tr>
+
+
+                    <?php
+
+                    while($row=mysqli_fetch_assoc($result))
+
+                    {
+                    ?>
+
+                    <tr>
+                        <td><?php echo $row['name'] ?></td>
+                        <td><?php echo $row['email'] ?><AAAA/td>
+                        <td><?php echo $row['phone'] ?></td>
+                        <td><?php echo $row['address'] ?></td>
+                    </tr>
+
+                    <?php
+
+                    }
+
+
+
+                    ?>
+
+                    
+                </table>
             </div>
         </div>
 

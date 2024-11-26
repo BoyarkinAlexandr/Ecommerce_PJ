@@ -74,10 +74,13 @@
             <h2>Панель Администратора</h2>
 
             <ul>
-                <li><a href="#">Панель инструментов</a></li>
-                <li><a href="#">Пользователи</a></li>
+                <li><a href="adminpage.php">Панель инструментов</a></li>
+                <li><a href="users.php">Пользователи</a></li>
                 <li><a href="add_product.php">Добавить продукт</a></li>
                 <li><a href="display_product.php">Посмотреть продукт</a></li>
+                <li>
+                    <a href="all_orders.php">Заказы</a>
+                </li>
             </ul>
         </div>
 

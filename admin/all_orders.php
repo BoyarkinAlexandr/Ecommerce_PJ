@@ -2,6 +2,8 @@
 
     session_start();
 
+    $conn = mysqli_connect("localhost", "root", "", "php_kurs");
+
     if(!isset($_SESSION['user_email']))
     {
 
@@ -12,27 +14,9 @@
         header("location:../home/login.php");
     }
 
-    $conn = mysqli_connect("localhost","root","","php_kurs");
-
-
-    if(isset($_GET['id']))
-    {
-        $p_id = $_GET['id'];
-
-        $del_sql = "DELETE from products where id='$p_id'";
-
-        $data = mysqli_query($conn, $del_sql);
-
-        if($data)
-        {
-            header("location:display_product.php");
-        }
-    }
-
-    $sql = "SELECT * from products";
+    $sql = "Select * from orders";
 
     $result = mysqli_query($conn, $sql);
-
 
 ?>
 
@@ -67,6 +51,7 @@
                 <li>
                     <a href="display_product.php">Посмотреть продукт</a>
                 </li>
+
                 <li>
                     <a href="all_orders.php">Заказы</a>
                 </li>
@@ -81,53 +66,57 @@
             </div>
 
             <div class="info">
-                <h1>Все продукты</h1>
-
+                <h1>Все Заказы</h1>
 
                 <table>
                     <tr>
+                        <th>Имя покупателя</th>
+                        <th>Email</th>
+                        <th>Адресс</th>
+                        <th>Номер</th>
                         <th>Название</th>
-                        <th>Описание</th>
-                        <th>Количество</th>
                         <th>Цена</th>
                         <th>Фото</th>
-                        <th>Удалить</th>
-                        <th>Обновить</th>
+                        <th>Статус заказа</th>
+                        <th>Изменить статус</th>
                     </tr>
 
 
-                <?php
+                    <?php
+                    while($row=mysqli_fetch_assoc($result))
 
-                while($row=mysqli_fetch_assoc($result))
+                    {
+                    ?>
 
-                {
-                ?>
-
-                <tr>
+                    <tr>
+                        <td><?php echo $row['username'] ?></td>
+                        <td><?php echo $row['email'] ?>/td>
+                        <td><?php echo $row['address'] ?></td>
+                        <td><?php echo $row['phone'] ?></td>
                         <td><?php echo $row['title'] ?></td>
-                        <td><?php echo $row['description'] ?></td>
-                        <td><?php echo $row['quantity'] ?></td>
-                        <td><?php echo $row['price']?></td>
+                        <td><?php echo $row['price'] ?></td>
                         <td>
-                            <img height="100" width="100" src="../product_image/<?php echo $row['image']?>">
+                            <img width="100" height="100" src="../product_image/<?php echo $row['image'] ?>">
                         </td>
+                        <td><?php echo $row['status'] ?></td>
+
 
                         <td>
-                            <a onclick="return confirm('Вы точно хотите удалить?');"
-                            class="del_btn" href="display_product.php?id=<?php echo $row['id']?>">Удалить</a>
-                        </td>
-
-                        <td>
-                            <a class="upd_btn" href="update_product.php?id=<?php echo $row['id'] ?>">Обновить</a>
+                            <a class="del_btn" href="update_order.php?id=<?php echo $row['id'] ?>">Приобретено</a>
                         </td>
                     </tr>
 
 
-                <?php
-                }
+                    <?php
 
-                ?>
+                    }
+
+
+                    ?>
+
+                    
                 </table>
+
             </div>
         </div>
 
