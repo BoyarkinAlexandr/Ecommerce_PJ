@@ -2,6 +2,8 @@
 
     session_start();
 
+    $conn = mysqli_connect("localhost","root","","php_kurs");
+
     if(!isset($_SESSION['user_email']))
     {
 
@@ -11,6 +13,38 @@
     {
         header("location:../home/login.php");
     }
+
+
+    $user_sql = "SELECT * from users";
+
+    $u_result = mysqli_query($conn, $user_sql);
+
+    $total_user = mysqli_num_rows($u_result);
+
+
+
+    $product_sql = "SELECT * from products";
+
+    $p_result = mysqli_query($conn, $product_sql);
+
+    $total_product = mysqli_num_rows($p_result);
+
+
+
+    $order_sql = "SELECT * from orders";
+
+    $o_result = mysqli_query($conn, $order_sql);
+
+    $total_order = mysqli_num_rows($o_result);
+
+
+
+
+    $del_sql = "SELECT * from orders where status= 'Доставленно'";
+
+    $d_result = mysqli_query($conn, $del_sql);
+
+    $total_del = mysqli_num_rows($d_result);
 
 ?>
 
@@ -60,7 +94,32 @@
             </div>
 
             <div class="info">
-                adasddasasmdaksldmasdmamklsdkamsdlkmasdmaskldkmaslkdmaksdmkaskmdakms
+                <div class="card">
+                    <div class="my_card">
+                        <h3>Количество пользователей</h3>
+                        <hr>
+                        <p><?php echo $total_user ?></p>
+                    </div>
+
+                    <div class="my_card">
+                        <h3>Количество Продуктов</h3>
+                        <hr>
+                        <p><?php echo $total_product ?></p>
+                    </div>
+
+                    <div class="my_card">
+                        <h3>Количество Заказов</h3>
+                        <hr>
+                        <p><?php echo $total_order ?></p>
+                    </div>
+
+
+                    <div class="my_card">
+                        <h3>Количество приобретённых</h3>
+                        <hr>
+                        <p><?php echo $total_del ?></p>
+                    </div>
+                </div>
             </div>
         </div>
 

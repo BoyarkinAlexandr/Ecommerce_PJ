@@ -90,7 +90,7 @@
 
                     <tr>
                         <td><?php echo $row['username'] ?></td>
-                        <td><?php echo $row['email'] ?>/td>
+                        <td><?php echo $row['email'] ?></td>
                         <td><?php echo $row['address'] ?></td>
                         <td><?php echo $row['phone'] ?></td>
                         <td><?php echo $row['title'] ?></td>

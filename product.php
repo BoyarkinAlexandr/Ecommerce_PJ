@@ -64,6 +64,7 @@ else
                 <a href="product.php">Продукты</a>
             </li>
 
+
             <?php
 
             if($_SESSION['user_email'])
@@ -107,9 +108,6 @@ else
 
     </nav>
 
-    <div>
-        <img class="my_insurance" src="insurance1.png">
-    </div>
 
     <div>
         <h3 class="p_title">Продукты</h3>
