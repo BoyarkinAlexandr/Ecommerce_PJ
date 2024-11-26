@@ -203,7 +203,7 @@ nav ul li a:hover
     font-size: 16px;
 }
 
-input[type='text'],[type='email'],[type='number'],[type='password']
+input[type='text'],[type='email'],[type='tel'],[type='password']
 {
     width: 40%;
     padding: 12px;
@@ -252,3 +252,18 @@ td
     margin: 10px;
     padding: 10px;
 }
+
+
+.delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background-color: #cc0000;
+}
+

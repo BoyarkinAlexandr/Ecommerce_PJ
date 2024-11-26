@@ -94,7 +94,7 @@
                         <td><?php echo $row['address'] ?></td>
                         <td><?php echo $row['phone'] ?></td>
                         <td><?php echo $row['title'] ?></td>
-                        <td><?php echo $row['price'] ?></td>
+                        <td><?php echo $row['price'] . ' Руб' ?></td>
                         <td>
                             <img width="100" height="100" src="../product_image/<?php echo $row['image'] ?>">
                         </td>

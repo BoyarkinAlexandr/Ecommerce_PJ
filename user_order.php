@@ -34,6 +34,20 @@ else
 {
     header("location:home/login.php");
 }
+
+
+//Удаление товара из заказа
+if (isset($_GET['delete_id'])) {
+    $delete_id = intval($_GET['delete_id']);
+    $delete_sql = "DELETE FROM orders WHERE id = $delete_id";
+    if (mysqli_query($conn, $delete_sql)) {
+        // Перезагрузка страницы после удаления
+        header("Location: user_order.php?email=" . ($my_email ?: $user_email));
+        exit();
+    } else {
+        echo "Ошибка при удалении товара: " . mysqli_error($conn);
+    }
+}
 ?>
 
 
@@ -55,19 +69,17 @@ else
         <label for="check" class="checkbtn">
             <i class="fa fa-bars"></i>
         </label>
-        <label class="my_logo">АВТОСТРАХОВАНИЕ</label>
+        <label class="my_logo">
+            <a style="color:white;" href="index.php">АВТОСТРАХОВАНИЕ</a>
+        </label>
 
         <ul>
             <li>
-                <a href="#">Домой</a>
+                <a href="index.php">Домой</a>
             </li>
 
             <li>
-                <a href="#">Продукты</a>
-            </li>
-
-            <li>
-                <a href="#">Контактые данные</a>
+                <a href="product.php">Продукты</a>
             </li>
 
             <?php
@@ -119,6 +131,7 @@ else
             <th>Название продукта</th>
             <th>Цена</th>
             <th>Фото</th>
+            <th>Удалить</th>
         </tr>
 
         <?php
@@ -129,9 +142,14 @@ else
 
         <tr>
             <td><?php echo $row['title'] ?></td>
-            <td><?php echo $row['price'] ?></td>
+            <td><?php echo $row['price'] . ' Руб' ?></td>
             <td>
                 <img width="100" height="100" src="product_image/<?php echo $row['image'] ?>">
+            </td>
+
+            <td>
+            <a href="user_order.php?email=<?php echo $my_email ?: $user_email; ?>&delete_id=<?php echo $row['id']; ?>" 
+               class="delete-btn">Удалить</a>
             </td>
         </tr>
 

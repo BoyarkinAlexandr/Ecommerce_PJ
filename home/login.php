@@ -81,9 +81,12 @@ $conn = mysqli_connect("localhost","root","","php_kurs");
         </div>
 
 
-        <div class = "input_deg">
-            <label>Пароль</label>
-            <input type="password" name="password" require>
+        <div class="input_deg">
+            <div class="password-container">
+                <label>Пароль</label>
+                <input type="password" name="password" id="password" required>
+                <span id="toggle-icon" onclick="togglePassword()">👁️</span>
+            </div>
         </div>
 
         <div class = "input_deg">
@@ -95,6 +98,21 @@ $conn = mysqli_connect("localhost","root","","php_kurs");
 
     </form>
     </div>
+
+    <script>
+    // Функция для переключения видимости пароля
+    function togglePassword() {
+        const passwordField = document.getElementById("password");
+        const toggleIcon = document.getElementById("toggle-icon");
+        if (passwordField.type === "password") {
+            passwordField.type = "text"; // Показываем пароль
+            toggleIcon.textContent = "🙈";  // Меняем символ на скрыть
+        } else {
+            passwordField.type = "password"; // Скрываем пароль
+            toggleIcon.textContent = "👁️";  // Меняем символ на показать
+        }
+    }
+    </script>
     
 </body>
 </html>

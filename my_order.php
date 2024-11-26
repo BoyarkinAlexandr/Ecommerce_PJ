@@ -83,19 +83,17 @@ if($order_result)
         <label for="check" class="checkbtn">
             <i class="fa fa-bars"></i>
         </label>
-        <label class="my_logo">АВТОСТРАХОВАНИЕ</label>
+        <label class="my_logo">
+            <a style="color:white;" href="index.php">АВТОСТРАХОВАНИЕ</a>
+        </label>
 
         <ul>
             <li>
-                <a href="#">Домой</a>
+                <a href="index.php">Домой</a>
             </li>
 
             <li>
-                <a href="#">Продукты</a>
-            </li>
-
-            <li>
-                <a href="#">Контактые данные</a>
+                <a href="product.php">Продукты</a>
             </li>
 
             <?php

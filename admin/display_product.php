@@ -107,7 +107,7 @@
                         <td><?php echo $row['title'] ?></td>
                         <td><?php echo $row['description'] ?></td>
                         <td><?php echo $row['quantity'] ?></td>
-                        <td><?php echo $row['price']?></td>
+                        <td><?php echo $row['price'] . ' Руб' ?></td>
                         <td>
                             <img height="100" width="100" src="../product_image/<?php echo $row['image']?>">
                         </td>

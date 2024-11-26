@@ -140,7 +140,7 @@ else
 
             <p><?php echo $row['description'] ?></p>
 
-            <p>Цена: <?php echo $row['price'] ?></p>
+            <p>Цена: <?php echo $row['price'] . ' Руб' ?></p>
 
 
             <?php
