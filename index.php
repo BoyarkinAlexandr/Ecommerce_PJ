@@ -1,4 +1,9 @@
 <?php
+
+session_start();
+error_reporting(0);
+
+
 $conn = mysqli_connect("localhost","root","","php_kurs");
 
 $sql = "SELECT * from products";
@@ -51,6 +56,25 @@ $result = mysqli_query($conn, $sql);
                 <a href="#">Контактые данные</a>
             </li>
 
+            <?php
+
+            if($_SESSION['user_email'])
+            {
+            
+            ?>
+
+            <a class ="logout_btn" href="logout.php">Выйти</a>
+
+            <?php
+            
+            }
+
+            else
+
+            {
+
+            ?>
+
             <li>
                 <a href="home/register.php">Регистрация</a>
             </li>
@@ -60,6 +84,12 @@ $result = mysqli_query($conn, $sql);
             </li>
 
 
+
+            <?php
+
+            }
+
+            ?>
 
         </ul>
 

@@ -21,7 +21,7 @@ $conn = mysqli_connect("localhost","root","","php_kurs");
             $_SESSION['user_email']=$u_email;
 
             $_SESSION['usertype']="user";
-            header("location:user.php");
+            header("location:../index.php");
         }
 
 
