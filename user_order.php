@@ -1,23 +1,40 @@
 <?php
 
-session_start();
 error_reporting(0);
 
+$conn = mysqli_connect("localhost", "root", "", "php_kurs");
 
-$conn = mysqli_connect("localhost","root","","php_kurs");
+session_start();
 
-$sql = "SELECT * from products";
+
+$my_email = $_SESSION['user_email'];
+
+$user_email = $_GET['email'];
+
+if($my_email)
+
+{
+    $sql = "Select * from orders where email = '$my_email'";
 
 $result = mysqli_query($conn, $sql);
 
+}
 
 
+else if($user_email)
 
+{
+    $sql = "Select * from orders where email = '$user_email'";
+
+    $result = mysqli_query($conn, $sql);
+
+}
+
+else
+{
+    header("location:home/login.php");
+}
 ?>
-
-
-
-
 
 
 
@@ -26,15 +43,12 @@ $result = mysqli_query($conn, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
     <link rel="stylesheet" type="text/css" href="style.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title></title>
 </head>
 <body>
-    
-    <nav>
+
+<nav>
         <input type="checkbox" id="check">
 
 
@@ -99,63 +113,27 @@ $result = mysqli_query($conn, $sql);
 
     </nav>
 
-    <div>
-        <img class="my_insurance" src="insurance1.png">
-    </div>
+    <table>
 
-    <div>
-        <h3 class="p_title">Продукты</h3>
-    </div>
-
-
-    <div class="my_card">
-
+        <tr>
+            <th>Название продукта</th>
+            <th>Цена</th>
+            <th>Фото</th>
+        </tr>
 
         <?php
 
         while($row=mysqli_fetch_assoc($result))
-
         {
-        
         ?>
 
-        <div class="card">
-            <img class="p_image" src="product_image/<?php echo $row['image'] ?>">
-            <h4><?php echo $row['title'] ?></h4>
-
-            <p><?php echo $row['description'] ?></p>
-
-            <p><?php echo $row['price'] ?></p>
-
-
-            <?php
-
-            if($_SESSION['user_email'])
-
-
-            {
-            ?>
-                <a href="my_order.php?id=<?php echo $row['id'] ?> & email=<?php echo $_SESSION['user_email']?>">Купить сейчас</a>
-            
-            
-            <?php
-            }
-
-            else
-
-            {
-            ?>
-                <a href="home/login.php">Купить сейчас</a>
-
-            <?php
-            }
-
-
-            ?>
-
-            
-
-        </div>
+        <tr>
+            <td><?php echo $row['title'] ?></td>
+            <td><?php echo $row['price'] ?></td>
+            <td>
+                <img width="100" height="100" src="product_image/<?php echo $row['image'] ?>">
+            </td>
+        </tr>
 
 
         <?php
@@ -163,12 +141,9 @@ $result = mysqli_query($conn, $sql);
 
         ?>
 
-    
-    </div>
 
-    
-
-    
+        
+    </table>
     
 </body>
 </html>
